@@ -1,12 +1,12 @@
 "use strict"
 
-// runGame()
-
 //roll dice function
 function rollDie(n){
     return (Math.floor(Math.random() * n) + 1);
 }
-function turnResults(playerScore, playerMove, whichPlayer){
+
+
+function turnResults(playerScore, playerMove, whichPlayer, i){
     let moveCalculation = playerScore + playerMove;
     if(moveCalculation == 20 || moveCalculation == 58){
         playerScore = (playerScore + playerMove) - 10;
@@ -26,14 +26,16 @@ function turnResults(playerScore, playerMove, whichPlayer){
         } else{
             player1Score += playerMove;
         }
-        console.log("Player 1, you rolled a " + playerMove + " Your current spot is " + playerScore);
+        console.log(whichPlayer + " you rolled a " + playerMove + " Your current spot is " + playerScore);
     }
     else{
         playerScore += playerMove;
     }
-    console.log("Player 1, you rolled a " + playerMove + " Your current spot is " + playerScore);
+    console.log(whichPlayer + " , you rolled a " + playerMove + " Your current spot is " + playerScore);
+    
     return playerScore;
 }
+
 
 function player1Turn(player1Score){
     let i = player1Score
@@ -73,11 +75,27 @@ function player1Turn(player1Score){
         }
         
         console.log("Player 1, you rolled a " + playerMove + " Your current spot is " + player1Score);
-        
-      
     }
-    return player1Score;
+    document.getElementById("player1Button").style.display = "block";
+    updatePosition(player1Score, "yellow", i);
+    return player1Score;    
+
 }
+
+function updatePosition(playerScore, backgroundColor, lastSpot){
+    if(playerScore != 0 ){
+        document.getElementById("cell-" + playerScore).style.backgroundColor = backgroundColor;
+    }
+    if(lastSpot != 0)
+    {
+        document.getElementById("cell-" + lastSpot).style.backgroundColor = "white";
+
+    }
+   
+}
+
+
+
 function player2Turn(player2Score){
     let i = player2Score;
     let playerMove = rollDie();
@@ -115,21 +133,31 @@ function player2Turn(player2Score){
             player2Score += playerMove;
         }
         console.log("Player 2, you rolled a " + playerMove+ " Your current spot is " + player2Score);
-    
     }
-
+    updatePosition(player2Score, "pink", i)
     return player2Score;
 }
+
+function showPlayer1Button(){
+    document.getElementById("player2Button").style.display = "none"; 
+    document.getElementById("player1Button").style.display = "block";
+}
+
+function showPlayer2Button(){
+    document.getElementById("player1Button").style.display = "none"; 
+    document.getElementById("player2Button").style.display = "block";
+}
+
 function runGame(){
     let player1Score = 0;
     let player2Score = 0;
 
-// player 1 turn
+
     while(player1Score < 100 && player2Score < 100){
         player1Score = player1Turn(player1Score);
         player2Score = player2Turn(player2Score);   
     }
-    //cleanup/ end game -ONCE
+
     if(player1Score == 100){
         console.log("You did it, you really won, Player 1!");
     }
@@ -139,5 +167,3 @@ function runGame(){
     
 
 }
-
-// function call is equal to the return

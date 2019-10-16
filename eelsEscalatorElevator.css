@@ -1,3 +1,37 @@
 h1{
     color: greenyellow;
+    font-family: 'Bungee Shade', cursive;
+}
+
+body{
+    text-align: center;
+}
+
+.button{
+    border: none;
+    background-color: yellow;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Fredoka One', cursive;
+    display: inline-block;
+    font-size: 15px;
+    margin: 5px 2px;
+    cursor: pointer;
+
+}
+.divTable {
+    width: 700px;
+    height: 700px;
+    border: 1px solid black;
+    align-content: center;
+}
+
+td{
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    padding: 0px;
+    margin: 0px;
+    width: 20px;
 }
