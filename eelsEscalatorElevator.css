@@ -27,6 +27,10 @@ body{
     align-content: center;
 }
 
+table {
+    font-family: 'VT323', monospace;
+}
+
 td{
     border-style: solid;
     border-color: black;
@@ -34,4 +38,9 @@ td{
     padding: 0px;
     margin: 0px;
     width: 20px;
+}
+
+p {
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
 }
